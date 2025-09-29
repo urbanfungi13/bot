@@ -1,9 +1,7 @@
-import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# Le token est stocké dans les variables Railway
-TOKEN = os.getenv("TOKEN")
+TOKEN = "8397591047:AAF84CGi_QdE4fcRIY7O-mwVkBe0xQWleKs"
 
 # Commande /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -17,13 +15,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Bienvenue 👋 Choisis un lien :", reply_markup=reply_markup)
 
 def main():
-    if not TOKEN:
-        print("❌ ERREUR : TOKEN manquant. Ajoute la variable TOKEN dans Railway.")
-        return
-
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-    print("✅ Bot lancé sur Railway")
+    print("✅ Bot lancé")
     app.run_polling()
 
 if __name__ == "__main__":
